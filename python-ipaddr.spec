@@ -1,14 +1,14 @@
 %{!?python_sitelib: %global python_sitelib %(%{__python} -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())")}
 
 Name:           python-ipaddr
-Version:        2.1.9
-Release:        5%{?dist}
+Version:        2.1.11
+Release:        1%{?dist}
 Summary:        A python library for working with IP addresses, both IPv4 and IPv6
 
 Group:          Development/Languages
 License:        ASL 2.0
 URL:            http://code.google.com/p/ipaddr-py/
-Source0:        http://ipaddr-py.googlecode.com/files/ipaddr-%{version}.tar.gz
+Source0:        http://pypi.python.org/packages/source/i/ipaddr/ipaddr-%{version}.tar.gz
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
 BuildArch:      noarch
@@ -43,6 +43,10 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Wed Feb 08 2017 Charalampos Stratakis <cstratak@redhat.com> - 2.1.11-1
+- Update to 2.7.11
+Resolves: rhbz#1417701
+
 * Fri Dec 27 2013 Daniel Mach <dmach@redhat.com> - 2.1.9-5
 - Mass rebuild 2013-12-27
 
