@@ -2,7 +2,7 @@
 
 Name:           python-ipaddr
 Version:        2.1.11
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        A python library for working with IP addresses, both IPv4 and IPv6
 
 Group:          Development/Languages
@@ -12,7 +12,7 @@ Source0:        http://pypi.python.org/packages/source/i/ipaddr/ipaddr-%{version
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
 BuildArch:      noarch
-BuildRequires:  python-devel
+BuildRequires:  python2-devel
 
 %description
 python-ipaddr is a library for working with IP addresses, both IPv4 and IPv6.
@@ -24,12 +24,12 @@ It was developed by Google for internal use, and is now open source.
 sed -i 1d ipaddr.py
 
 %build
-%{__python} setup.py build
+%{__python2} setup.py build
 
 
 %install
 rm -rf $RPM_BUILD_ROOT
-%{__python} setup.py install -O1 --skip-build --root $RPM_BUILD_ROOT
+%{__python2} setup.py install -O1 --skip-build --root $RPM_BUILD_ROOT
 
  
 %clean
@@ -39,10 +39,14 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(-,root,root,-)
 %doc COPYING README RELEASENOTES
-%{python_sitelib}/*
+%{python2_sitelib}/*
 
 
 %changelog
+* Thu Jun 20 2019 Charalampos Stratakis <cstratak@redhat.com> - 2.1.11-2
+- Bump release for rebuild
+Resolves: rhbz#1722453
+
 * Wed Feb 08 2017 Charalampos Stratakis <cstratak@redhat.com> - 2.1.11-1
 - Update to 2.7.11
 Resolves: rhbz#1417701
